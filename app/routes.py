@@ -10,3 +10,7 @@ def index():
 @app.route('/fractalTree')
 def fractalTree():
     return render_template("fractalTree.html")
+
+@app.route('/background')
+def background():
+    return render_template("background.html")

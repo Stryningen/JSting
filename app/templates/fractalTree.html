@@ -1,14 +1,21 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fractal Trees</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/fractalTree.css') }}">
-</head>
-<body>
-    <canvas></canvas>
-    <button class="generateTree">Generate Random Tree</button>
-    <script src="{{ url_for('static', filename='js/fractalTree.js') }}"></script>
-</body>
+    <head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Fractal Trees</title>
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/fractalTree.css') }}">
+    </head>
+    <body>
+	<main>
+	    <div id="canvas_box">
+		<canvas></canvas>
+		<button class="generateTree">Generate Random Tree</button>
+	    </div>
+	    <div id="create_tree_menu"></div>
+	    <div id="buttons">
+	    </div>
+	    <script src="{{ url_for('static', filename='js/FractalTree.js') }}"></script>
+	</main>
+    </body>
 </html>

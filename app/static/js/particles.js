@@ -1,12 +1,11 @@
-const canvas = document.getElementById("canvas1");
-const ctx = canvas.getContext('2d');
+const canvas = document.getElementById(`canvas1`);
+const ctx = canvas.getContext(`2d`);
 ctx.canvas.width = window.innerWidth;
 ctx.canvas.height = window.innerHeight;
 
 let particleArray;
 
 // create constructor function
-
 function Particle(x, y, dirX, dirY, size, color){
     this.x = x;
     this.y = y;
@@ -17,6 +16,44 @@ function Particle(x, y, dirX, dirY, size, color){
 }
 
 //add draw method to particle prototype
+Particle.prototype.draw = () => {
+    ctx.beginPath();
+    ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
+    ctx.fillStyle = this.color;
+    ctx.fill();
+};
 
-Particle.prototype.draw = function(){
+//add update method to Particle
+Particle.prototype.update = () => {
+    if (this.x + this.size > canvas.width || this.x - this.size < 0){
+        this.dirX = -this.dirX;
+    }
+    if (this.y + this.size > canvas.height || this.y - this.size < 0){
+        this.dirY = -this.dirY;
+    }
+    this.draw();
+};
+
+// create particle array
+function init(){
+
+    particleArray = [];
+
+    for(let i = 0; i < 100; i++){
+        let size = Math.random() * 40;
+        let x = Math.random() * (canvas.width - 2*size);
+        let y = Math.random() * (canvas.height - 2*size);
+        let dirX = Math.random() * .4 - .2;
+        let dirY = Math.random() * .4 - .2;
+
+        let red = Math.random() * 255;
+        let blue = Math.random() * 255;
+        let green = Math.random() * 255;
+        let color = `rgb(${red},${green},${blue})`;
+
+	particleArray.push(new Particle(x, y, dirX, dirY, size, color));
+    }
 }
+
+// create animation loop
+

@@ -15,8 +15,9 @@ function Particle(x, y, dirX, dirY, size, color){
     this.color = color;
 }
 
+
 //add draw method to particle prototype
-Particle.prototype.draw = () => {
+Particle.prototype.draw = function(){
     ctx.beginPath();
     ctx.arc(this.x, this.y, this.size, 0, 2 * Math.PI, false);
     ctx.fillStyle = this.color;
@@ -24,13 +25,15 @@ Particle.prototype.draw = () => {
 };
 
 //add update method to Particle
-Particle.prototype.update = () => {
+Particle.prototype.update = function() {
     if (this.x + this.size > canvas.width || this.x - this.size < 0){
         this.dirX = -this.dirX;
     }
     if (this.y + this.size > canvas.height || this.y - this.size < 0){
         this.dirY = -this.dirY;
     }
+    this.x += this.dirX;
+    this.y += this.dirY;
     this.draw();
 };
 
@@ -51,9 +54,25 @@ function init(){
         let green = Math.random() * 255;
         let color = `rgb(${red},${green},${blue})`;
 
-	particleArray.push(new Particle(x, y, dirX, dirY, size, color));
+        particleArray.push(new Particle(x, y, dirX, dirY, size, color));
     }
 }
 
 // create animation loop
+function animate(){
+    requestAnimationFrame(animate);
+    ctx.clearRect(0,0, innerWidth, innerHeight);
 
+    for (let i = 0; i<particleArray.length; i++){
+        particleArray[i].update();
+    }
+}
+init();
+animate();
+
+window.addEventListener(`resize`, ()=>{
+    canvas.innerHeight = innerHeight;
+    canvas.innerWidth = innerWidth;
+    init();
+}
+);

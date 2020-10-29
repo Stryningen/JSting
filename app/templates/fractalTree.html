@@ -12,7 +12,22 @@
 		<canvas></canvas>
 		<button class="generateTree">Generate Random Tree</button>
 	    </div>
-	    <div id="create_tree_menu"></div>
+	    <div id="create_tree_menu">
+		<div id="color-slider1">
+		    <div id="red1" class="slider"><div id="red2-slider"></div></div>
+		    <div id="green1" class="slider"><div id="green2-slider"></div></div>
+		    <div id="blue1" class="slider"><div id="blue2-slider"></div></div>
+		</div>
+		<div id="color-label1">
+		</div>
+		<div id="color-slider2">
+		    <div id="red2" class="slider"><div id="red2-slider"></div></div>
+		    <div id="green2" class="slider"><div id="green2-slider"></div></div>
+		    <div id="blue2" class="slider"><div id="blue2-slider"></div></div>
+		</div>
+		<div id="color-label2">
+		</div>
+	    </div>
 	    <div id="buttons">
 	    </div>
 	    <script src="{{ url_for('static', filename='js/FractalTree.js') }}"></script>

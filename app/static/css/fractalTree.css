@@ -47,6 +47,39 @@ canvas {
     background-color: blue;
 }
 
+#color-label1,  #color-label2{
+    padding: 0.5em;
+    height: 10%;
+}
+
+#color-slider1, #color-slider2 {
+    padding: 1em 0;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+}
+
+.slider {
+    border: solid 0.1em black;
+    border-radius: 15px;
+}
+
+#create_tree_menu > div > div {
+    height: 100%;
+    display: flex;
+    flex-flow: column;
+    justify-content: flex-end;
+}
+
+#create_tree_menu > div > div > div {
+    background-color: black;
+    height: 1.1em;
+    width: 1.1em;
+    border-radius: 100%;
+}
+
 #buttons {
     grid-column: 1 / 3;
     grid-row: 2 / 3;
@@ -54,6 +87,5 @@ canvas {
 }
 
 .generateTree:active {
-    transform: translate(-50%);
-    transform: translate(-50%, 1px);
+    transform: translate(-50%, 2px);
 }

@@ -1,2 +1,4 @@
 
 FLASK_APP=JSgames.py
+FLASK_ENV=development
+TEMPLATES_AUTO_RELOAD = True

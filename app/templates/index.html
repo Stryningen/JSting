@@ -1,15 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title></title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/index.css')}}"
+    />
+  </head>
+  <body>
     <main>
-        <ol>
-	    <li><a id="fractalTree" href="{{ url_for('fractalTree') }}">Fractal Tree</a></li>
-	    <li><a id="background" href="{{ url_for('background') }}">Background</a></li>
-        </ol>
+      <ul id="list-of-projects">
+        <li>
+          <a id="fractalTree" href="{{ url_for('fractalTree') }}">Fractal Tree</a>
+        </li>
+        <li>
+          <a id="background" href="{{ url_for('background') }}">Floating Particles</a>
+        </li>
+      </ul>
     </main>
-</body>
+  </body>
 </html>

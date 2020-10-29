@@ -1,0 +1,27 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    min-height: 100vh;
+}
+
+main {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#list-of-projects > li {
+    list-style: none;
+    margin: 1em 0;
+    text-align: center;
+}
+
+#list-of-projects > li > a {
+    font-size: 1.2em;
+    text-decoration: none;
+}

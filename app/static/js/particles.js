@@ -70,9 +70,9 @@ function animate(){
 init();
 animate();
 
-window.addEventListener(`resize`, ()=>{
-    canvas.innerHeight = innerHeight;
-    canvas.innerWidth = innerWidth;
+window.addEventListener(`resize`, function(){
+    canvas.height = innerHeight;
+    canvas.width = innerWidth;
     init();
 }
 );

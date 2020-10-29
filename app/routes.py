@@ -19,5 +19,5 @@ def background():
 
 
 @app.route("/snake")
-def snakeDiv():
+def snake():
     return render_template("snakeDivs.html")

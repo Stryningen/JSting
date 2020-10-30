@@ -4,6 +4,8 @@ let color = `grey`;
 let startX = 10;
 let startY = 10;
 let snakeBody = [];
+let direction = `Numpad6`; //right
+let speed = 0.5;
 
 function bodyPart(posX, posY) {
     this.body = document.createElement(`div`);
@@ -27,4 +29,62 @@ function initSnake(){
     game.appendChild(snakeBody[0].body);
 }
 
+function game_loop(){
+    move(direction);
+    console.log(direction);
+    requestAnimationFrame(game_loop);
+}
+
+function update_pos(delta_x, delta_y){
+    let temp_pos1 = snakeBody[0].pos;
+    let temp_pos2;
+    snakeBody[0].pos[0] += delta_x;
+    snakeBody[0].pos[1] += delta_y;
+    snakeBody[0].body.style.left = snakeBody[0].pos[0] + `px`;
+    snakeBody[0].body.style.top = snakeBody[0].pos[1] + `px`;
+    for (let i = 1; i < snakeBody.length; i++){
+        temp_pos2 = snakeBody[i];
+        snakeBody[i].pos = temp_pos1;
+        temp_pos1 = temp_pos2;
+        snakeBody[0].body.style.left = snakeBody[0].pos[0] + `px`;
+        snakeBody[0].body.style.top = snakeBody[0].pos[1] + `px`;
+    }
+}
+
+function move(direction){
+    switch(direction){
+    case `Numpad8`: //up
+	    update_pos(0, -speed);
+	    break;
+    case `Numpad2`: //down
+	    update_pos(0, speed);
+	    break;
+    case `Numpad4`: //left
+	    update_pos(-speed, 0);
+	    break;
+    case `Numpad6`: //right
+	    update_pos(speed, 0);
+	    break;
+    }
+
+}
+
+window.addEventListener(`keypress`, (e)=> {
+    switch(e.code){
+    case `Numpad8`: //up
+	    direction = e.code;
+	    break;
+    case `Numpad2`: //down
+	    direction = e.code;
+	    break;
+    case `Numpad4`: //left
+	    direction = e.code;
+	    break;
+    case `Numpad6`: //right
+	    direction = e.code;
+	    break;
+    }
+});
+
 initSnake();
+//game_loop();

@@ -80,11 +80,11 @@ function move(direction){
 }
 
 function check_move(snakeBody){
-    if(snakeBody[0].pos[0] <= 0 || snakeBody[0].pos[0] >= game.style.width){
+    if(snakeBody[0].pos[0] <= 0 || snakeBody[0].pos[0] >= game.clientWidth){
         game_over = true;
 	console.log(game.style.width);
     }
-    else if(snakeBody[0].pos[1] <= 0 || snakeBody[0].pos[1] >= game.innerHeight){
+    else if(snakeBody[0].pos[1] <= 0 || snakeBody[0].pos[1] >= game.clientHeight){
         game_over = true;
 	console.log(game.innerHeight);
     }

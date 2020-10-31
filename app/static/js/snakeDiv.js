@@ -1,4 +1,6 @@
 let game = document.getElementById(`game-board`);
+let game_over = false;
+//snake
 let size = 20;
 let color = `grey`;
 let startX = 10;
@@ -6,6 +8,10 @@ let startY = 10;
 let snakeBody = [];
 let direction = `Numpad6`; //right
 let speed = 0.5;
+//apple
+let is_apple = false;
+let apple_pos;
+let score = 0;
 
 function bodyPart(posX, posY) {
     this.body = document.createElement(`div`);
@@ -30,7 +36,11 @@ function initSnake(){
 }
 
 function game_loop(){
+    if(game_over){
+        console.log(`game Over`);
+    }
     move(direction);
+    check_move(snakeBody);
     console.log(direction);
     requestAnimationFrame(game_loop);
 }
@@ -67,6 +77,41 @@ function move(direction){
 	    break;
     }
 
+}
+
+function check_move(snakeBody){
+    if(snakeBody[0].pos[0] <= 0 || snakeBody[0].pos[0] >= game.style.width){
+        game_over = true;
+	console.log(game.style.width);
+    }
+    else if(snakeBody[0].pos[1] <= 0 || snakeBody[0].pos[1] >= game.innerHeight){
+        game_over = true;
+	console.log(game.innerHeight);
+    }
+    for(let i = 1; i < snakeBody.length; i++){
+        if(snakeBody[0].pos === snakeBody[i].pos){
+	 game_over = true;
+        }
+    }
+
+
+}
+
+function create_apple(x, y){
+    this.body = document.createElement(`div`);
+    this.pos = [x, y];
+
+    this.body.setAttribute(`style`,  `width: ` + size + `px; height: ` + size + `px;`);
+    this.body.style.width = size + `px;`;
+    this.body.style.height = size + `px;`;
+    this.body.style.backgroundColor = `green`;
+    this.body.style.position = `relative`;
+    this.body.style.zIndex = 10;
+    this.body.style.left = x + `px`;
+    this.body.style.top = y + `px`;
+
+    game.appendChild(this.body);
+    apple_pos = this.pos;
 }
 
 window.addEventListener(`keypress`, (e)=> {
